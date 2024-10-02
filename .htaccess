@@ -1,0 +1,31 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+  # Home Pagination
+  RewriteRule ^page/([0-9]+)$ ./index.php?page=$1 [L,NC]
+
+	# Categories
+	RewriteRule ^([^/.]+)$ ./index.php?p=category&display=$1 [L,NC]
+
+	# Categories Pagination
+	RewriteRule ^([^/.]+)/page/([0-9]+)$ ./index.php?p=category&display=$1&page=$2 [L,NC]
+
+	# Posts
+	RewriteRule ^([^/.]+)\.html$ ./index.php?p=post&display=$1 [L,NC]
+
+	# Search Tags
+	RewriteRule ^tag/results/([^/.]+)$ ./index.php?p=search&search=$1 [L,NC]
+
+	# Search
+	RewriteRule ^search/results$ ./index.php?p=search [L,NC]
+
+	# Archive
+	RewriteRule ^archive/([0-9]+)/([0-9]+)$ ./index.php?p=archive&y=$1&m=$2 [L,NC]
+
+	# Sitemap/ php to xml
+	RewriteRule ^sitemap.xml$ ./index.php?p=sitemap [L,NC]
+
+	# Rss
+	RewriteRule ^feeds/rss$ ./index.php?p=rss [L,NC]
+
+</IfModule>
